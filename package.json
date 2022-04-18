@@ -1,12 +1,9 @@
 {
     "name": "react-unix-terminal",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "license": "MIT",
     "main": "build/src/ReactUnixTerminal.js",
     "types": "build/src/ReactUnixTerminal.d.ts",
-    "scripts": {
-        "postinstall": "make install-server"
-    },
     "files": [
         "dist"
     ],
