@@ -28,7 +28,7 @@ ReactDOM.render(
 
 ### Will show in web as
 
-![alt output](doc/img/demo.png)
+![alt output](https://github.com/P-YNPM/react-unix-terminal/blob/main/doc/img/demo.png)
 
 ### Can I raise an issue?
 
