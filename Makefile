@@ -48,10 +48,23 @@ build: pre-build
 build-prod: remove-build
 	$(tsc) -p tsconfig.prod.json
 
+## publish
+publish-semantic-version:
+	npm version $(type) && make build-prod && npm publish
+
+publish-minor:
+	make publish-semantic-version type=minor
+
+publish-patch:
+	make publish-semantic-version type=patch
+
+publish-major:
+	make publish-semantic-version type=major
+
 ## test
 test:
 	$(NODE_BIN)esbuild test/index.ts --bundle --minify --target=node16.3.1 --platform=node --outfile=__tests__/index.test.js &&\
-		$(NODE_BIN)jest __tests__ $(arguments)
+		$(NODE_BIN)jest __tests__
 
 ## format
 prettier=$(NODE_BIN)prettier
