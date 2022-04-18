@@ -1,0 +1,7 @@
+body {
+    height: 100vh;
+}
+div#root {
+    height: 100%;
+    overflow: auto;
+}

@@ -1,0 +1,10 @@
+{
+    "name": "terminal-dev-server",
+    "type": "module",
+    "dependencies": {
+        "express": "^4.17.3"
+    },
+    "devDependencies": {
+        "esbuild": "^0.14.36"
+    }
+}

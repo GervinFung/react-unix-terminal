@@ -1,0 +1,45 @@
+{
+    "name": "react-unix-terminal",
+    "version": "0.0.0",
+    "license": "MIT",
+    "main": "build/src/ReactUnixTerminal.js",
+    "types": "build/src/ReactUnixTerminal.d.ts",
+    "scripts": {
+        "postinstall": "make install-server"
+    },
+    "files": [
+        "dist"
+    ],
+    "keywords": [
+        "react terminal",
+        "terminal",
+        "web terminal",
+        "web unix",
+        "react unix terminal",
+        "react-terminal"
+    ],
+    "dependencies": {
+        "html-react-parser": "^1.4.11",
+        "parse-dont-validate": "^1.0.3",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "sanitize-html": "^2.7.0",
+        "styled-components": "^5.3.5"
+    },
+    "devDependencies": {
+        "@types/jest": "^27.4.1",
+        "@types/node": "^17.0.23",
+        "@types/react": "^18.0.1",
+        "@types/react-dom": "^18.0.1",
+        "@types/sanitize-html": "^2.6.2",
+        "@types/styled-components": "^5.1.25",
+        "@typescript-eslint/eslint-plugin": "^5.19.0",
+        "@typescript-eslint/parser": "^5.19.0",
+        "esbuild": "^0.14.36",
+        "eslint": "^8.13.0",
+        "eslint-plugin-react": "^7.29.4",
+        "jest": "^27.5.1",
+        "prettier": "^2.6.2",
+        "typescript": "^4.6.3"
+    }
+}
