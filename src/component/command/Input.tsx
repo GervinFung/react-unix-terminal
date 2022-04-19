@@ -175,8 +175,8 @@ const ShellInput = styled.input`
         isCommandExists: boolean;
     }>) =>
         isCommandExists
-            ? ({ theme }) => theme.theme.commandExists
-            : ({ theme }) => theme.theme.error};
+            ? ({ theme }) => theme.commandExists
+            : ({ theme }) => theme.error};
 `;
 
 export default Input;

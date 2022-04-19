@@ -36,6 +36,10 @@ transpile:
 		&& cd build/ && cp index.html 200.html && cd ../\
 		&& node script/terser.js
 
+## ts-add-js-extension
+ts-add-js-extension:
+	$(NODE_BIN)ts-add-js-extension add --dir=dist
+
 ## build
 remove-build:
 	rm -rf build
@@ -46,7 +50,7 @@ build: pre-build
 	make transpile
 
 build-prod: remove-build
-	$(tsc) -p tsconfig.prod.json
+	$(tsc) -p tsconfig.prod.json && make ts-add-js-extension
 
 ## publish
 publish-semantic-version:

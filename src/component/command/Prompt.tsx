@@ -17,15 +17,15 @@ const Prompt = ({
 );
 
 const User = styled.span`
-    color: ${({ theme }) => theme.theme.user};
+    color: ${({ theme }) => theme.user};
 `;
 
 const Name = styled.span`
-    color: ${({ theme }) => theme.theme.name};
+    color: ${({ theme }) => theme.name};
 `;
 
 const Symbols = styled.span`
-    color: ${({ theme }) => theme.theme.promptSymbols};
+    color: ${({ theme }) => theme.promptSymbols};
 `;
 
 const Input = styled(Symbols)`

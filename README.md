@@ -38,7 +38,6 @@ Why not? Feel free to raise an issue if you have a question, an enhancement, or 
 
 I need help for the following features 🙂
 
--   [ ] Customizable theme
 -   [ ] More usable default command
 
 However, before contributing, I would prefer if you could
