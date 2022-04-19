@@ -43,14 +43,23 @@ ts-add-js-extension:
 ## build
 remove-build:
 	rm -rf build
+
 pre-build: remove-build
 	cp -R public build
 
 build: pre-build
 	make transpile
 
-build-prod: remove-build
-	$(tsc) -p tsconfig.prod.json && make ts-add-js-extension
+pre-build-prod:
+	rm -rf dist
+
+copy-css:
+	cp -r public/style.css dist/
+
+build-prod: pre-build-prod
+	$(tsc) -p tsconfig.prod.json &&\
+		make ts-add-js-extension &&\
+		make copy-css
 
 ## publish
 publish-semantic-version:

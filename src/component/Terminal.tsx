@@ -4,7 +4,6 @@ import Input from './command/Input';
 import useCommandHistory from '../hook/useCommandHistory';
 import { Commands } from '../command/util';
 import Font from './common/FontTag';
-import styled from 'styled-components';
 
 const Terminal = ({
     commands,
@@ -47,8 +46,11 @@ const Terminal = ({
     }, [history]);
 
     return (
-        <Container>
-            <InnerContainer ref={containerRef}>
+        <div className="react-unix-terminal-terminal">
+            <div
+                ref={containerRef}
+                className="react-unix-terminal-terminal-inner-container"
+            >
                 <Font fontFamily={fontFamily} />
                 <History name={name} user={user} history={history} />
                 <Input
@@ -65,18 +67,9 @@ const Terminal = ({
                     setLastCommandIndex={setLastCommandIndex}
                     clearHistory={clearHistory}
                 />
-            </InnerContainer>
-        </Container>
+            </div>
+        </div>
     );
 };
-
-const Container = styled.div`
-    white-space: pre-wrap;
-`;
-
-const InnerContainer = styled.div`
-    overflow-y: auto;
-    height: 100%;
-`;
 
 export default Terminal;

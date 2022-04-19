@@ -9,6 +9,10 @@ ReactDOM.render(
             name="poolofdeath20"
             fontFamily="JetBrains+Mono"
             height="100vh"
+            width="100%"
+            commands={{
+                julia: () => '<a href="www.google.com">google</a>',
+            }}
         />
     </React.StrictMode>,
     document.getElementById('root'),
