@@ -44,7 +44,7 @@ const Output = styled.p`
     line-height: normal;
     > a {
         text-decoration: none;
-        color: ${({ theme }) => theme.theme.link};
+        color: ${({ theme }) => theme.link};
     }
 `;
 
@@ -55,8 +55,8 @@ const Command = styled.div`
         isCommandExists: boolean;
     }>) =>
         isCommandExists
-            ? ({ theme }) => theme.theme.commandExists
-            : ({ theme }) => theme.theme.error};
+            ? ({ theme }) => theme.commandExists
+            : ({ theme }) => theme.error};
 `;
 
 export default History;

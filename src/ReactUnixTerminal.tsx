@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Terminal from './component/Terminal';
 import { Commands } from './command/util';
-import styled, { ThemeProvider } from 'styled-components';
-import { primaryTheme } from './theme/colorTheme';
+import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
 import createCommands, { Options } from './command/defaultCommands';
 
 type ContainerProps = Readonly<{
@@ -20,6 +19,7 @@ const ReactUnixTerminal = ({
     user,
     name,
     fontFamily,
+    theme,
 }: ContainerProps &
     FlexibleHeightContainerProps &
     Readonly<{
@@ -27,12 +27,27 @@ const ReactUnixTerminal = ({
         options?: Options;
         user: string;
         name: string;
+        theme?: DefaultTheme;
     }>) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
     const containerRef = React.useRef<HTMLDivElement>(null);
 
     return (
-        <ThemeProvider theme={primaryTheme}>
+        <ThemeProvider
+            theme={
+                theme ?? {
+                    background: '#22292B',
+                    normalText: '#E5C07B',
+                    border: '#98C379',
+                    name: '#67B0E8',
+                    user: '#CE89DF',
+                    promptSymbols: '#A89984',
+                    error: '#F44747',
+                    commandExists: '#67CBE7',
+                    link: '#6CB5ED',
+                }
+            }
+        >
             <FlexibleHeightContainer height={height}>
                 <Container
                     fontFamily={fontFamily.split('+').join(' ')}
@@ -63,7 +78,7 @@ const ReactUnixTerminal = ({
 const FlexibleHeightContainer = styled.div`
     padding: 14px 8px;
     box-sizing: border-box;
-    background-color: ${({ theme }) => theme.theme.background};
+    background-color: ${({ theme }) => theme.background};
     height: ${({ height }: FlexibleHeightContainerProps) => height};
 `;
 
@@ -78,24 +93,24 @@ const Container = styled.div`
     }
 
     ::-webkit-scrollbar-track {
-        background: ${({ theme }) => theme.theme.background};
+        background: ${({ theme }) => theme.background};
     }
 
     ::-webkit-scrollbar-thumb {
-        background: ${({ theme }) => theme.theme.normalText};
+        background: ${({ theme }) => theme.normalText};
     }
 
-    background-color: ${({ theme }) => theme.theme.background};
-    border: 2px solid ${({ theme }) => theme.theme.border};
-    color: ${({ theme }) => theme.theme.normalText};
+    background-color: ${({ theme }) => theme.background};
+    border: 2px solid ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.normalText};
     font-family: ${({ fontFamily }: ContainerProps) => fontFamily}!important;
 `;
 
 const TerminalContainer = styled.div`
     box-sizing: border-box;
     min-height: 100%;
-    background-color: ${({ theme }) => theme.theme.background};
-    color: ${({ theme }) => theme.theme.normalText};
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.normalText};
 `;
 
 export default ReactUnixTerminal;
