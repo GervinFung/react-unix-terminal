@@ -11,15 +11,17 @@ Hence, I published it
 ```ts
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import Terminal from 'react-unix-terminal';
+import ReactUnixTerminal from 'react-unix-terminal';
+import 'react-unix-terminal/dist/style.css';
 
 ReactDOM.render(
     <React.StrictMode>
-        <Terminal
+        <ReactUnixTerminal
             user="guest"
             name="poolofdeath20"
             fontFamily="JetBrains+Mono"
             height="100vh"
+            width="100%"
         />
     </React.StrictMode>,
     document.getElementById('root'),

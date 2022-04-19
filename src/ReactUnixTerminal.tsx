@@ -1,116 +1,138 @@
 import * as React from 'react';
 import Terminal from './component/Terminal';
 import { Commands } from './command/util';
-import styled, { DefaultTheme, ThemeProvider } from 'styled-components';
 import createCommands, { Options } from './command/defaultCommands';
+import Theme from './theme/Theme';
 
-type ContainerProps = Readonly<{
-    fontFamily: string;
-}>;
+const AppContext = React.createContext({
+    theme: {
+        background: '#22292B',
+        normalText: '#E5C07B',
+        border: '#98C379',
+        name: '#67B0E8',
+        user: '#CE89DF',
+        promptSymbols: '#A89984',
+        error: '#F44747',
+        commandExists: '#67CBE7',
+        link: '#6CB5ED',
+    } as Theme,
+});
 
-type FlexibleHeightContainerProps = Readonly<{
-    height: string;
-}>;
-
+/**
+ * If you are seeing this message, please import css file, like so, `import 'react-unix-terminal/dist/style.css'`
+ */
 const ReactUnixTerminal = ({
     commands,
     options,
     height,
+    width,
     user,
     name,
     fontFamily,
     theme,
-}: ContainerProps &
-    FlexibleHeightContainerProps &
-    Readonly<{
-        commands?: Commands;
-        options?: Options;
-        user: string;
-        name: string;
-        theme?: DefaultTheme;
-    }>) => {
+}: Readonly<{
+    commands?: Commands;
+    options?: Options;
+    height: string;
+    width: string;
+    user: string;
+    name: string;
+    fontFamily: string;
+    theme?: Theme;
+}>) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
     const containerRef = React.useRef<HTMLDivElement>(null);
+    const cssVariableRef = React.useRef<HTMLDivElement>(null);
+
+    const appContext = React.useContext(AppContext);
+
+    const chosenTheme = theme ?? appContext.theme;
+
+    React.useEffect(() => {
+        const { current } = cssVariableRef;
+        //ref: https://www.w3schools.com/css/css3_variables_javascript.asp
+        if (current) {
+            const {
+                background,
+                normalText,
+                border,
+                name,
+                user,
+                promptSymbols,
+                link,
+            } = chosenTheme;
+            current.style.setProperty(
+                '--react-unix-terminal-background',
+                background,
+            );
+            current.style.setProperty(
+                '--react-unix-terminal-scrollbar-thumb',
+                promptSymbols,
+            );
+            current.style.setProperty(
+                '--react-unix-terminal-normal-text',
+                normalText,
+            );
+            current.style.setProperty('--react-unix-terminal-border', border);
+            current.style.setProperty('--react-unix-terminal-name', name);
+            current.style.setProperty('--react-unix-terminal-user', user);
+            current.style.setProperty(
+                '--react-unix-terminal-prompt-symbols',
+                promptSymbols,
+            );
+            current.style.setProperty('--react-unix-terminal-link', link);
+            current.style.setProperty(
+                '--react-unix-terminal-font-family',
+                fontFamily.split('+').join(' '),
+            );
+        }
+    }, [chosenTheme.background]);
 
     return (
-        <ThemeProvider
-            theme={
-                theme ?? {
-                    background: '#22292B',
-                    normalText: '#E5C07B',
-                    border: '#98C379',
-                    name: '#67B0E8',
-                    user: '#CE89DF',
-                    promptSymbols: '#A89984',
-                    error: '#F44747',
-                    commandExists: '#67CBE7',
-                    link: '#6CB5ED',
-                }
-            }
+        <AppContext.Provider
+            value={{
+                ...appContext,
+                theme: chosenTheme,
+            }}
         >
-            <FlexibleHeightContainer height={height}>
-                <Container
-                    fontFamily={fontFamily.split('+').join(' ')}
-                    ref={containerRef}
-                    onClick={() => {
-                        const { current } = inputRef;
-                        if (current) {
-                            current.focus();
-                        }
+            <div
+                ref={cssVariableRef}
+                className="react-unix-terminal-terminal-outermost-container"
+            >
+                <div
+                    className="react-unix-terminal-terminal-flexible-height-width-app-container"
+                    style={{
+                        height,
+                        width,
                     }}
                 >
-                    <TerminalContainer>
-                        <Terminal
-                            user={user}
-                            name={name}
-                            fontFamily={fontFamily}
-                            commands={createCommands(commands, options)}
-                            containerRef={containerRef}
-                            inputRef={inputRef}
-                        />
-                    </TerminalContainer>
-                </Container>
-            </FlexibleHeightContainer>
-        </ThemeProvider>
+                    <div
+                        ref={containerRef}
+                        className="react-unix-terminal-terminal-scrollable-container"
+                        onClick={() => {
+                            const { current } = inputRef;
+                            if (current) {
+                                current.focus();
+                            }
+                        }}
+                    >
+                        <div className="react-unix-terminal-terminal-container">
+                            <Terminal
+                                user={user}
+                                name={name}
+                                fontFamily={fontFamily}
+                                commands={createCommands(commands, options)}
+                                containerRef={containerRef}
+                                inputRef={inputRef}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </AppContext.Provider>
     );
 };
 
-const FlexibleHeightContainer = styled.div`
-    padding: 14px 8px;
-    box-sizing: border-box;
-    background-color: ${({ theme }) => theme.background};
-    height: ${({ height }: FlexibleHeightContainerProps) => height};
-`;
-
-const Container = styled.div`
-    padding: 16px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    height: 100%;
-    overflow-y: auto;
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: ${({ theme }) => theme.background};
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: ${({ theme }) => theme.normalText};
-    }
-
-    background-color: ${({ theme }) => theme.background};
-    border: 2px solid ${({ theme }) => theme.border};
-    color: ${({ theme }) => theme.normalText};
-    font-family: ${({ fontFamily }: ContainerProps) => fontFamily}!important;
-`;
-
-const TerminalContainer = styled.div`
-    box-sizing: border-box;
-    min-height: 100%;
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.normalText};
-`;
+export { AppContext };
 
 export default ReactUnixTerminal;
