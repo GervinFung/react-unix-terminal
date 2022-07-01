@@ -8,6 +8,7 @@ import Font from './common/FontTag';
 const Terminal = ({
     commands,
     fontFamily,
+    importGoogleFont = true,
     inputRef,
     containerRef,
     name,
@@ -15,6 +16,7 @@ const Terminal = ({
 }: Readonly<{
     commands: Commands;
     fontFamily: string;
+    importGoogleFont?: boolean;
     inputRef: React.RefObject<HTMLInputElement>;
     containerRef: React.RefObject<HTMLDivElement>;
     name: string;
@@ -51,7 +53,7 @@ const Terminal = ({
                 ref={containerRef}
                 className="react-unix-terminal-terminal-inner-container"
             >
-                <Font fontFamily={fontFamily} />
+                {importGoogleFont && <Font fontFamily={fontFamily} />}
                 <History name={name} user={user} history={history} />
                 <Input
                     name={name}
