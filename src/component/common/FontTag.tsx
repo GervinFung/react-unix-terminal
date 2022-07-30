@@ -16,7 +16,7 @@ const Font = ({
             href={`https://fonts.googleapis.com/css2?family=${fontFamily}:wght@${Array.from(
                 { length: 9 },
                 (_, i) => (i + 1) * 100,
-            )}&display=swap`}
+            ).join(';')}&display=swap`}
             rel="stylesheet"
         />
     </>
