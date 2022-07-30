@@ -1,5 +1,6 @@
 ## declare PHONY
 .PHONY: build test all
+MAKEFLAGS += --silent
 
 all:
 	make typecheck &&\
