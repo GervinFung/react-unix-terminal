@@ -16,6 +16,21 @@
         "react unix terminal",
         "react-terminal"
     ],
+    "scripts": {
+        "setup": "yarn install --frozen-lockfile && cd server && yarn setup",
+        "typecheck": "tsc -p tsconfig.json",
+        "typecheck-watch": "yarn typecheck --w",
+        "serve": "node server",
+        "start": "(trap 'kill 0' INT; yarn serve & yarn build & yarn typecheck-watch)",
+        "transpile": "node script/esbuild.js && cd build/ && cp index.html 200.html && cd ../ && node script/terser.js",
+        "build": "rm -rf build && cp -R public build && yarn transpile",
+        "build-prod": "rm -rf dist && tsc -p tsconfig.prod.json && ts-add-js-extension add --dir=dist && cp -r public/style.css dist/",
+        "test": "esbuild test/index.ts --bundle --minify --target=node16.3.1 --platform=node --outfile=__tests__/index.test.js && jest __tests__",
+        "lint": "eslint src/ test/ -f='stylish' --color",
+        "format": "prettier --write src/ test/",
+        "format-check": "prettier --check src/ test/",
+        "all": "yarn typecheck && yarn format && yarn lint && yarn test && yarn build-prod"
+    },
     "dependencies": {
         "html-react-parser": "^1.4.11",
         "parse-dont-validate": "^1.0.3",
