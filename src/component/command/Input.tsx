@@ -123,7 +123,7 @@ const Input = ({
                                             previousCommands[
                                                 previousCommands.length - index
                                             ]?.command,
-                                        ).orElseThrowCustom(
+                                        ).elseThrow(
                                             `${previousCommands.join()} to have specified command at index ${
                                                 previousCommands.length - index
                                             }`,
@@ -148,7 +148,7 @@ const Input = ({
                                         parseAsString(
                                             previousCommands[length - index]
                                                 ?.command,
-                                        ).orElseThrowCustom(
+                                        ).elseThrow(
                                             `${previousCommands.join()} to have specified command`,
                                         ),
                                     );

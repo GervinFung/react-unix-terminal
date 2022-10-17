@@ -6,13 +6,13 @@ const parseAsCommandHistory = (commands: any): CommandsHistory =>
         ? []
         : parseAsReadonlyArray(JSON.parse(commands), (command) => ({
               timeCreated: new Date(
-                  parseAsString(command.timeCreated).orElseThrowDefault(
-                      'timeCreated',
+                  parseAsString(command.timeCreated).elseThrow(
+                      `timeCreated is not an ISO string, it is ${command.timeCreated}`,
                   ),
               ),
-              command: parseAsString(command.command).orElseThrowDefault(
-                  'command',
+              command: parseAsString(command.command).elseThrow(
+                  `command is not a string, it is ${command.command}`,
               ),
-          })).orElseThrowDefault('commands');
+          })).elseThrow(`commands is not an array, it is ${commands}`);
 
 export default parseAsCommandHistory;

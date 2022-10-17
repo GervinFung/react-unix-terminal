@@ -52,7 +52,9 @@ const shell = async ({
     setCommand: (command: string) => void;
 }>) => {
     const args = command.split(' ');
-    const arg = parseAsString(args[0]).orElseThrowDefault(args.join(' '));
+    const arg = parseAsString(args[0]).elseThrow(
+        `arg is not a string, it is ${args.join(' ')}`,
+    );
 
     if (command === 'clearhist') {
         clearHistory();

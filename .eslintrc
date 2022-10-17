@@ -33,6 +33,7 @@
                 "selector": "TSEnumDeclaration",
                 "message": "Don't declare enums"
             }
-        ]
+        ],
+        "semi": [2, "always"]
     }
 }
