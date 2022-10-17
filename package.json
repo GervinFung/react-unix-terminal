@@ -28,7 +28,7 @@
         "test": "esbuild test/index.ts --bundle --minify --target=node16.3.1 --platform=node --outfile=__tests__/index.test.js && jest __tests__",
         "lint": "eslint src/ test/ -f='stylish' --color",
         "format": "prettier --ignore-path .gitignore --write src/ test/",
-        "format:check": "prettier --ignore-path .gitignore --check src/ test/",
+        "format-check": "prettier --ignore-path .gitignore --check src/ test/",
         "all": "yarn typecheck && yarn format && yarn lint && yarn test && yarn build-prod"
     },
     "dependencies": {
