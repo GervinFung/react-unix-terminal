@@ -1,4 +1,4 @@
-name: server-ci-cd
+name: react-unix-terminal-ci-cd
 
 on: [push, pull_request]
 
