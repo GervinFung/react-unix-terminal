@@ -2,7 +2,7 @@
     "name": "terminal-dev-server",
     "type": "module",
     "scripts": {
-        "setup": "yarn install --frozen-lockfile"
+        "installation": "pnpm i --frozen-lockfile"
     },
     "dependencies": {
         "express": "^4.17.3"

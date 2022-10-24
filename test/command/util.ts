@@ -3,6 +3,7 @@ import {
     commandCompletion,
     shell,
 } from '../../src/command/util';
+import { it, describe, expect } from 'vitest';
 
 const testCommandCompletion = () => {
     describe('command completion', () => {
