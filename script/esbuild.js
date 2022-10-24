@@ -10,7 +10,7 @@ import { build } from 'esbuild';
         },
         bundle: true,
         minify: true,
-        minifyWhitespace: true,
+        sourcemap: true,
         platform: 'browser',
         logLevel: 'silent',
         watch: {

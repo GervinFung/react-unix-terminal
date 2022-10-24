@@ -1,4 +1,5 @@
 import parseAsCommandHistory from '../../src/command/parser';
+import { it, describe, expect } from 'vitest';
 
 const testCommandHistoryParser = () =>
     describe('command history parser', () => {

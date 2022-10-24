@@ -1,4 +1,5 @@
 import createCommands from '../../src/command/defaultCommands';
+import { it, describe, expect } from 'vitest';
 
 const testDefaultCommand = () =>
     describe('default command', () => {
