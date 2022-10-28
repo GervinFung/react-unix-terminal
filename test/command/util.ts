@@ -47,7 +47,7 @@ const testShell = () => {
                         commands,
                         command: com,
                         setHistory: (output, commands) => {
-                            expect(output).toBe(commands[com]());
+                            expect(output).toBe(commands?.[com]?.());
                             expect(
                                 isCommandExists({ commands, command: com }),
                             ).toBe(true);

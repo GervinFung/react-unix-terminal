@@ -1,4 +1,4 @@
-import { parseAsString } from 'parse-dont-validate';
+import parse from 'parse-dont-validate';
 import * as React from 'react';
 import {
     Commands,
@@ -119,15 +119,18 @@ const Input = ({
                                 if (index <= length) {
                                     setLastCommandIndex(index);
                                     setCommand(
-                                        parseAsString(
+                                        parse(
                                             previousCommands[
                                                 previousCommands.length - index
                                             ]?.command,
-                                        ).elseThrow(
-                                            `${previousCommands.join()} to have specified command at index ${
-                                                previousCommands.length - index
-                                            }`,
-                                        ),
+                                        )
+                                            .asString()
+                                            .elseThrow(
+                                                `${previousCommands.join()} to have specified command at index ${
+                                                    previousCommands.length -
+                                                    index
+                                                }`,
+                                            ),
                                     );
                                 }
                             }
@@ -145,12 +148,14 @@ const Input = ({
                                 } else {
                                     setLastCommandIndex(index);
                                     setCommand(
-                                        parseAsString(
+                                        parse(
                                             previousCommands[length - index]
                                                 ?.command,
-                                        ).elseThrow(
-                                            `${previousCommands.join()} to have specified command`,
-                                        ),
+                                        )
+                                            .asString()
+                                            .elseThrow(
+                                                `${previousCommands.join()} to have specified command`,
+                                            ),
                                     );
                                 }
                             }

@@ -1,16 +1,22 @@
-import express from 'express';
-import { resolve } from 'path';
+import Fastify from 'fastify';
+import staticFileRouter from './route/static.js';
 
-const { static: expressStatic } = express;
+const main = () => {
+    const fastify = Fastify({ logger: true });
 
-const port = 4000;
-const build = 'build';
+    staticFileRouter(fastify);
 
-const app = express();
-app.use(expressStatic(resolve(build)));
-app.get('*', (_, res) => res.sendFile(resolve(build, 'index.html')));
-app.listen(port, () =>
-    console.log(
-        `🚀 Client listening at port ${port} 🚀 at time: ${new Date()}`,
-    ),
-);
+    const port = parseInt(process.env.PORT || '4000');
+    // ref: https://github.com/fastify/fastify/issues/709
+    const host = process.env.HOST || '0.0.0.0';
+
+    fastify.listen({ port, host }, (error) =>
+        error
+            ? fastify.log.error(error)
+            : fastify.log.info(
+                  `🚀 Fastify is listening at host: ${host}, at port :${port}, at time: ${new Date()} 🚀`,
+              ),
+    );
+};
+
+main();

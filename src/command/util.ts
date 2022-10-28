@@ -1,4 +1,4 @@
-import { parseAsString } from 'parse-dont-validate';
+import parse from 'parse-dont-validate';
 import parseAsCommandHistory from './parser';
 
 type Commands = Readonly<{
@@ -52,9 +52,9 @@ const shell = async ({
     setCommand: (command: string) => void;
 }>) => {
     const args = command.split(' ');
-    const arg = parseAsString(args[0]).elseThrow(
-        `arg is not a string, it is ${args.join(' ')}`,
-    );
+    const arg = parse(args[0])
+        .asString()
+        .elseThrow(`arg is not a string, it is ${args.join(' ')}`);
 
     if (command === 'clearhist') {
         clearHistory();

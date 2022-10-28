@@ -19,7 +19,7 @@ const AppContext = React.createContext({
 });
 
 /**
- * If you are seeing this message, please import css file, like so, `import 'react-unix-terminal/dist/style.css'`
+ * If you are seeing this message, please import css file, like so, `import 'react-unix-terminal/build/style.css'`
  */
 const ReactUnixTerminal = ({
     commands,
