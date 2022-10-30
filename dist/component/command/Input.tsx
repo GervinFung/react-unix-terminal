@@ -1,4 +1,4 @@
-import parse from 'https://raw.githubusercontent.com/Packer-Man/parse-dont-validate/main/dist/mod.ts';
+import parse from 'npm:parse-dont-validate@4.0.1';
 import React from "https://dev.jspm.io/react@18.2.0";;
 import {
     Commands,

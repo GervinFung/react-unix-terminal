@@ -13,6 +13,7 @@ specifiers:
   eslint: ^8.26.0
   eslint-plugin-react: ^7.31.10
   html-react-parser: ^3.0.4
+  node-package-helper: github:Packer-Man/node-package-helper
   parse-dont-validate: ^4.0.1
   prettier: ^2.7.1
   react: ^18.2.0
@@ -41,6 +42,7 @@ devDependencies:
   esbuild: 0.15.12
   eslint: 8.26.0
   eslint-plugin-react: 7.31.10_eslint@8.26.0
+  node-package-helper: github.com/Packer-Man/node-package-helper/a59a22b11474c4c9999784adcbda5f56a714bb3f
   prettier: 2.7.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2630,4 +2632,17 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  github.com/Packer-Man/node-package-helper/a59a22b11474c4c9999784adcbda5f56a714bb3f:
+    resolution: {tarball: https://codeload.github.com/Packer-Man/node-package-helper/tar.gz/a59a22b11474c4c9999784adcbda5f56a714bb3f}
+    name: node-package-helper
+    version: 0.0.2
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      ts-add-js-extension: 1.3.2_typescript@4.8.4
+      typescript: 4.8.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
