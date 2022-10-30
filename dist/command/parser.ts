@@ -1,4 +1,4 @@
-import parse from 'https://raw.githubusercontent.com/Packer-Man/parse-dont-validate/main/dist/mod.ts';
+import parse from 'npm:parse-dont-validate@4.0.1';
 import { CommandsHistory } from '../hook/useCommandHistory.tsx';
 
 const parseAsCommandHistory = (commands: any): CommandsHistory =>
