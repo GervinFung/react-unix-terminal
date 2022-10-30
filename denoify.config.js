@@ -1,4 +1,4 @@
 module.exports = {
-    index: 'src/index.ts',
+    index: 'src/ReactUnixTerminal.tsx',
     out: 'dist',
 };

@@ -1,6 +1,6 @@
 {
     "name": "react-unix-terminal",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "main": "build/cjs/ReactUnixTerminal.js",
     "module": "build/mjs/ReactUnixTerminal.js",
@@ -40,7 +40,7 @@
         "build-mjs": "tsc -p tsconfig.mjs.json && ts-add-js-extension add --dir=build/mjs",
         "build-cjs": "tsc -p tsconfig.cjs.json",
         "build-dts": "tsc -p tsconfig.dts.json",
-        "build-deno": "denoify && pnpm copy-css-deno",
+        "build-deno": "denoify && pnpm copy-css-deno && rm -rf dist/index.tsx",
         "build-local": "rm -rf build-local && cp -R public build-local && pnpm transpile",
         "build": "rm -rf build dist && pnpm build-dts && pnpm build-cjs && pnpm build-mjs && node script/package.js && pnpm build-deno && pnpm copy-css-node",
         "test": "vitest",
