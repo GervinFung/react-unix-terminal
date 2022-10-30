@@ -9,6 +9,7 @@
     "exports": {
         "./package.json": "./package.json",
         "./build/style.css": "./build/style.css",
+        "./dist/style.css": "./build/style.css",
         ".": {
             "require": "./build/cjs/ReactUnixTerminal.js",
             "import": "./build/mjs/ReactUnixTerminal.js",
