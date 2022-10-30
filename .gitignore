@@ -3,9 +3,7 @@ node_modules
 server/node_modules
 
 # production
-build
 build*
-dist
 
 # misc
 .env
