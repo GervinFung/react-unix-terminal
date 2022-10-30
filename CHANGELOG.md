@@ -1,29 +1,30 @@
-## 1.0.1 (31 July 2021)
+## 1.0.2 (28 Oct 2022)
 
--   Fixed loading google font as optional
+-   (Fix) Provide commonjs & deno support
 
-## 1.0.0 (19 Apr 2021)
+## 1.0.1 (31 July 2022)
 
--   Removed all styled-components after giving due consideration
--   Used css for styling, that means user must import css files via `import 'react-unix-terminal/dist/style.css';`
--   Providing className also allow user to add custom styling, this should be the most convenient way
--   If there's a better way without importing css, I will consider it, until then, this will be the way
+-   (Fix) Loading google font as optional
 
-## 0.0.3 (18 Apr 2021)
+## 1.0.0 (19 Apr 2022)
 
--   Featured customizable theme
--   Fixed styled-components dependencies as peerDependencies
+-   (Feat) All styled-components after giving due consideration, import css files via `import 'react-unix-terminal/dist/style.css';`
 
-## 0.0.2 (18 Apr 2021)
+## 0.0.3 (18 Apr 2022)
 
--   Fixed react and react-dom dependencies as peerDependencies
--   Fixed main and type definition path
+-   (Feat) Customizable theme
+-   (Fix) Styled-components dependencies as peerDependencies
 
-## 0.0.1 (18 Apr 2021)
+## 0.0.2 (18 Apr 2022)
 
--   Fixed Package post install script
--   Fixed README.md demo image
+-   (Fix) React and react-dom dependencies as peerDependencies
+-   (Fix) Main and type definition path
 
-## 0.0.0 (18 Apr 2021)
+## 0.0.1 (18 Apr 2022)
 
--   Initial public release
+-   (Fix) Package post install script
+-   (Fix) README.md demo image
+
+## 0.0.0 (18 Apr 2022)
+
+-   (Feat) Initial public release

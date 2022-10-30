@@ -9,10 +9,10 @@ Hence, I published it
 ### How do I use it?
 
 ```ts
-import * as React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactUnixTerminal from 'react-unix-terminal';
-import 'react-unix-terminal/dist/style.css';
+import 'react-unix-terminal/build/style.css';
 
 ReactDOM.render(
     <React.StrictMode>

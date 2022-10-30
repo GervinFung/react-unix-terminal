@@ -2,11 +2,23 @@
     "name": "react-unix-terminal",
     "version": "1.0.1",
     "license": "MIT",
-    "main": "dist/ReactUnixTerminal.js",
-    "types": "dist/ReactUnixTerminal.d.ts",
-    "type": "module",
+    "main": "build/cjs/ReactUnixTerminal.js",
+    "module": "build/mjs/ReactUnixTerminal.js",
+    "types": "build/dts/ReactUnixTerminal.d.ts",
+    "react-native": "build/mjs/ReactUnixTerminal.js",
+    "exports": {
+        "./package.json": "./package.json",
+        "./build/style.css": "./build/style.css",
+        "./dist/style.css": "./build/style.css",
+        ".": {
+            "require": "./build/cjs/ReactUnixTerminal.js",
+            "import": "./build/mjs/ReactUnixTerminal.js",
+            "default": "./build/mjs/ReactUnixTerminal.js",
+            "types": "./build/dts/ReactUnixTerminal.d.ts"
+        }
+    },
     "files": [
-        "dist"
+        "build"
     ],
     "keywords": [
         "react terminal",
@@ -21,11 +33,17 @@
         "typecheck": "tsc -p tsconfig.json",
         "typecheck-watch": "pnpm typecheck --w",
         "serve": "node server",
-        "start": "(trap 'kill 0' INT; pnpm serve & pnpm build & pnpm typecheck-watch)",
+        "start": "(trap 'kill 0' INT; pnpm serve & pnpm build-local & pnpm typecheck-watch)",
         "transpile": "node script/esbuild.js && cd build/ && cp index.html 200.html && cd ../",
-        "build": "rm -rf build && cp -R public build && pnpm transpile",
-        "build-prod": "rm -rf dist && tsc -p tsconfig.prod.json && ts-add-js-extension add --dir=dist && cp -r public/style.css dist/",
-        "test": "vitest test/index.ts",
+        "copy-css-deno": "cp -r public/style.css dist/",
+        "copy-css-node": "cp -r public/style.css build/",
+        "build-mjs": "tsc -p tsconfig.mjs.json && ts-add-js-extension add --dir=build/mjs",
+        "build-cjs": "tsc -p tsconfig.cjs.json",
+        "build-dts": "tsc -p tsconfig.dts.json",
+        "build-deno": "denoify && pnpm copy-css-deno",
+        "build-local": "rm -rf build-local && cp -R public build-local && pnpm transpile",
+        "build": "rm -rf build dist && pnpm build-dts && pnpm build-cjs && pnpm build-mjs && node script/package.js && pnpm build-deno && pnpm copy-css-node",
+        "test": "vitest",
         "lint": "eslint src/ test/ -f='stylish' --color",
         "format": "prettier --ignore-path .gitignore --write src/ test/",
         "format-check": "prettier --ignore-path .gitignore --check src/ test/",
@@ -33,29 +51,30 @@
     },
     "dependencies": {
         "html-react-parser": "^3.0.4",
-        "parse-dont-validate": "^3.0.0",
+        "parse-dont-validate": "^4.0.1",
         "remove": "^0.1.5",
-        "sanitize-html": "^2.7.2"
+        "sanitize-html": "^2.7.3"
     },
     "peerDependencies": {
-        "react": ">=16",
-        "react-dom": ">=16"
+        "react": ">=18",
+        "react-dom": ">=18"
     },
     "devDependencies": {
-        "@types/node": "^18.11.0",
-        "@types/react": "^18.0.21",
-        "@types/react-dom": "^18.0.6",
+        "@types/node": "^18.11.7",
+        "@types/react": "^18.0.24",
+        "@types/react-dom": "^18.0.8",
         "@types/sanitize-html": "^2.6.2",
-        "@typescript-eslint/eslint-plugin": "^5.40.0",
-        "@typescript-eslint/parser": "^5.40.0",
-        "cases-of-test": "^0.0.0",
+        "@typescript-eslint/eslint-plugin": "^5.41.0",
+        "@typescript-eslint/parser": "^5.41.0",
+        "cases-of-test": "^0.1.0",
+        "denoify": "^1.4.1",
         "esbuild": "^0.15.12",
-        "eslint": "^8.25.0",
+        "eslint": "^8.26.0",
         "eslint-plugin-react": "^7.31.10",
         "prettier": "^2.7.1",
-        "react": ">=16",
-        "react-dom": ">=16",
-        "ts-add-js-extension": "^1.2.4",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "ts-add-js-extension": "^1.3.2",
         "typescript": "^4.8.4",
         "vitest": "^0.24.3"
     },

@@ -3,7 +3,7 @@ import { build } from 'esbuild';
 (() =>
     build({
         entryPoints: ['src/index.tsx'],
-        outfile: 'build/index.js',
+        outfile: 'build-local/index.js',
         loader: {
             '.ts': 'tsx',
             '.png': 'binary',
@@ -12,7 +12,7 @@ import { build } from 'esbuild';
         minify: true,
         sourcemap: true,
         platform: 'browser',
-        logLevel: 'silent',
+        logLevel: 'info',
         watch: {
             onRebuild: (error, result) => console.log(error ?? result),
         },

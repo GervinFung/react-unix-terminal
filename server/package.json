@@ -4,10 +4,8 @@
     "scripts": {
         "installation": "pnpm i --frozen-lockfile"
     },
-    "dependencies": {
-        "express": "^4.17.3"
-    },
     "devDependencies": {
-        "esbuild": "^0.14.36"
+        "@fastify/static": "^6.5.0",
+        "fastify": "^4.9.2"
     }
 }
