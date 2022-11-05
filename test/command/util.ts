@@ -52,7 +52,7 @@ const testShell = () => {
                                 isCommandExists({ commands, command: com }),
                             ).toBe(true);
                         },
-                        clearHistory: () => {},
+                        clearHistory: () => undefined,
                         setCommand: (command) => expect(command).toBe(''),
                     }),
             );
@@ -68,7 +68,7 @@ const testShell = () => {
                         true,
                     );
                 },
-                clearHistory: () => {},
+                clearHistory: () => undefined,
                 setCommand: (command) => expect(command).toBe(''),
             });
         });
