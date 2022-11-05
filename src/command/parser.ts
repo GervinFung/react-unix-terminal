@@ -1,10 +1,10 @@
 import parse from 'parse-dont-validate';
 import { CommandsHistory } from '../hook/useCommandHistory';
 
-const parseAsCommandHistory = (commands: any): CommandsHistory =>
+const parseAsCommandHistory = (commands: unknown): CommandsHistory =>
     !commands
         ? []
-        : parse(JSON.parse(commands))
+        : parse(JSON.parse(commands as string))
               .asReadonlyArray((command) => ({
                   timeCreated: new Date(
                       parse(command.timeCreated)
