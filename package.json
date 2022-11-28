@@ -1,63 +1,22 @@
 {
     "name": "react-unix-terminal",
-    "version": "1.0.2",
     "license": "MIT",
-    "main": "build/cjs/ReactUnixTerminal.js",
-    "module": "build/mjs/ReactUnixTerminal.js",
-    "types": "build/dts/ReactUnixTerminal.d.ts",
-    "react-native": "build/mjs/ReactUnixTerminal.js",
-    "exports": {
-        "./package.json": "./package.json",
-        "./build/style.css": "./build/style.css",
-        "./dist/style.css": "./build/style.css",
-        ".": {
-            "require": "./build/cjs/ReactUnixTerminal.js",
-            "import": "./build/mjs/ReactUnixTerminal.js",
-            "default": "./build/mjs/ReactUnixTerminal.js",
-            "types": "./build/dts/ReactUnixTerminal.d.ts"
-        }
-    },
-    "files": [
-        "build"
-    ],
-    "keywords": [
-        "react terminal",
-        "terminal",
-        "web terminal",
-        "web unix",
-        "react unix terminal",
-        "react-terminal"
-    ],
+    "type": "module",
     "scripts": {
-        "installation": "pnpm i --frozen-lockfile && cd server && pnpm installation",
-        "typecheck": "tsc -p tsconfig.json",
-        "typecheck-watch": "pnpm typecheck --w",
-        "serve": "node server",
-        "start": "(trap 'kill 0' INT; pnpm serve & pnpm build-local & pnpm typecheck-watch)",
-        "transpile": "node script/esbuild.js && cd build/ && cp index.html 200.html && cd ../",
-        "copy-css-deno": "cp -r public/style.css dist/",
-        "copy-css-node": "cp -r public/style.css build/",
-        "build-mjs": "tsc -p tsconfig.mjs.json && ts-add-js-extension add --dir=build/mjs",
-        "build-cjs": "tsc -p tsconfig.cjs.json",
-        "build-dts": "tsc -p tsconfig.dts.json",
-        "build-deno": "denoify && pnpm copy-css-deno && rm -rf dist/index.tsx",
-        "build-local": "rm -rf build-local && cp -R public build-local && pnpm transpile",
-        "build": "rm -rf build dist && pnpm build-dts && pnpm build-cjs && pnpm build-mjs && node-package-helper && pnpm build-deno && pnpm copy-css-node",
+        "dev": "vite --host",
         "test": "vitest",
+        "build": "vite build",
+        "typecheck": "tsc -p tsconfig.json",
         "lint": "eslint src/ test/ -f='stylish' --color",
         "format": "prettier --ignore-path .gitignore --write src/ test/",
         "format-check": "prettier --ignore-path .gitignore --check src/ test/",
-        "all": "pnpm typecheck && pnpm format && pnpm lint && pnpm test && pnpm build-prod"
+        "installation": "pnpm i --frozen-lockfile"
     },
     "dependencies": {
         "html-react-parser": "^3.0.4",
         "parse-dont-validate": "^4.0.1",
         "remove": "^0.1.5",
         "sanitize-html": "^2.7.3"
-    },
-    "peerDependencies": {
-        "react": ">=18",
-        "react-dom": ">=18"
     },
     "devDependencies": {
         "@poolofdeath20/eslint-config": "^0.0.1",
@@ -67,25 +26,15 @@
         "@types/sanitize-html": "^2.6.2",
         "@typescript-eslint/eslint-plugin": "^5.41.0",
         "@typescript-eslint/parser": "^5.41.0",
+        "@vitejs/plugin-react": "^2.2.0",
         "cases-of-test": "^0.1.0",
-        "denoify": "^1.4.1",
-        "esbuild": "^0.15.12",
         "eslint": "^8.26.0",
         "eslint-plugin-react": "^7.31.10",
-        "node-package-helper": "github:Packer-Man/node-package-helper",
         "prettier": "^2.7.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "ts-add-js-extension": "^1.3.2",
         "typescript": "^4.8.4",
+        "vite": "^3.2.4",
         "vitest": "^0.24.3"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/P-YNPM/react-unix-terminal"
-    },
-    "bugs": {
-        "url": "https://github.com/P-YNPM/react-unix-terminal/issues"
-    },
-    "homepage": "https://github.com/P-YNPM/react-unix-terminal#readme"
+    }
 }

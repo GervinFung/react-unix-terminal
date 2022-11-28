@@ -1,64 +1,43 @@
 # **react-unix-terminal**
 
-I want to build a web terminal, not a real one of course, but to simulate one with executable command
+I think it's interesting to implement/simulate a fake terminal that actually runs a command, execute tasks and return an output
 
-Therefore I built it, then I figure it can be published as NPM package
+With the catch of going back to plain CSS
 
-Hence, I published it
+Therefore I built it out of boredom
 
-### How do I use it?
+#### Main Page (The only page)
 
-```ts
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactUnixTerminal from 'react-unix-terminal';
-import 'react-unix-terminal/build/style.css';
+![Demo](./doc/img/demo.png 'Demo')
 
-ReactDOM.render(
-    <React.StrictMode>
-        <ReactUnixTerminal
-            user="guest"
-            name="poolofdeath20"
-            fontFamily="JetBrains+Mono"
-            height="100vh"
-            width="100%"
-        />
-    </React.StrictMode>,
-    document.getElementById('root'),
-);
-```
+## Tech Used
 
-### Will show in web as
+| Aspect                                                                 | Name           |
+| ---------------------------------------------------------------------- | -------------- |
+| Development Language                                                   | TypeScipt      |
+| Bundling                                                               | Vite           |
+| Testing                                                                | Vitest         |
+| Styling                                                                | CSS            |
+| Library                                                                | React          |
+| Text Editor                                                            | NeoVim         |
+| Dependency Management                                                  | Pnpm           |
+| Continuous Integration, Continuous Delivery, and Continuous Deployment | GitHub Actions |
 
-![alt output](https://github.com/P-YNPM/react-unix-terminal/blob/main/doc/img/demo.png)
+## How to build this app?
 
-### Can I raise an issue?
+_*Make sure you have `pnpm` available in your system*_
 
-Why not? Feel free to raise an issue if you have a question, an enhancement, or a bug report.
+#### Pnpm Commands
 
-### Can I contribute
+_*Below are the listed commands that you can use to build/develop/test this app*_
 
-I need help for the following features 🙂
-
--   [ ] More usable default command
-
-However, before contributing, I would prefer if you could
-
--   Use TypeScript
--   Write Test Code
-
-### Changes
-
-Kindly refer to [CHANGELOG](https://github.com/P-YNPM/react-unix-terminal/blob/main/CHANGELOG.md)
-
-### How to install
-
-```sh
-yarn add react-unix-terminal
-```
-
-OR
-
-```sh
-npm i react-unix-terminal
-```
+| Command           | Usage                                             |
+| ----------------- | ------------------------------------------------- |
+| pnpm dev          | Start development                                 |
+| pnpm test         | Run all test code                                 |
+| pnpm build        | Bundle and build the app                          |
+| pnpm typecheck    | Run typechecking for source and test code         |
+| pnpm lint         | Run linter for source and test code               |
+| pnpm format       | Run prettier to format source and test code       |
+| pnpm format-check | Run prettier to check source and test code format |
+| pnpm installation | Install all dependencies                          |
