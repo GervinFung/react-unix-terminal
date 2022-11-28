@@ -18,9 +18,6 @@ const AppContext = React.createContext({
     } as Theme,
 });
 
-/**
- * If you are seeing this message, please import css file, like so, `import 'react-unix-terminal/build/style.css'`
- */
 const ReactUnixTerminal = ({
     commands,
     options,

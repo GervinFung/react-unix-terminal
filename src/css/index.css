@@ -1,3 +1,12 @@
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+div#root {
+    height: 100%;
+    overflow: auto;
+}
 /* History */
 .react-unix-terminal-history-container {
     display: flex;
